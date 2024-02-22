@@ -1,3 +1,4 @@
+####Sonar properties####
 sonar.projectKey=vprofile
 sonar.projectName=vprofile-repo
 sonar.projectVersion=1.0
