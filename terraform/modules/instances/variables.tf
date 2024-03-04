@@ -51,3 +51,7 @@ variable "user_data_file_paths" {
   type = list(string)
   description = "List of user data script paths"
 }
+variable "iam_instance_profile" {
+  type = string
+  description = "S3 profile name"
+}

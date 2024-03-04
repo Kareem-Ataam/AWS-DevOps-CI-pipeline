@@ -39,6 +39,7 @@ resource "aws_instance" "machine" {
   key_name               = aws_key_pair.ssh-key.key_name
   vpc_security_group_ids = [aws_security_group.app-sg[count.index].id]
   user_data              = file(var.user_data_file_paths[count.index])
+  iam_instance_profile   = var.iam_instance_profile
   tags = {
     Name = var.instance_name_list[count.index]
   }

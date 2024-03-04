@@ -22,10 +22,17 @@ module "instances" {
   vpc_id               = module.vpc.vpc_id
   subnet_id_list       = module.vpc.subnet_id_list
   user_data_file_paths = var.user_data_file_paths
+  iam_instance_profile = module.backup-srv.profile_name
 }
 #Creation of subnet associations
 resource "aws_route_table_association" "subnet-rt" {
   count          = length(module.vpc.subnet_id_list)
   subnet_id      = module.vpc.subnet_id_list[count.index]
   route_table_id = module.vpc.route_table_id
+}
+# Creation of the resources that will be used for backup
+module "backup-srv" {
+  source      = "./modules/backup-srv"
+  bucket_name = var.bucket_name
+  s3_name_tag = var.s3_name_tag
 }

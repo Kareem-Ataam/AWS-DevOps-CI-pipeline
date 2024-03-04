@@ -83,6 +83,13 @@ variable "instance_name_list" {
   description = "List of instance names"
 }
 variable "user_data_file_paths" {
-  type = list(string)
+  type        = list(string)
   description = "List of user data script paths"
+}
+variable "bucket_name" {
+  type        = string
+  description = "A globally unique name for the bucket"
+}
+variable "s3_name_tag" {
+  type = string
 }
